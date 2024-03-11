@@ -25,6 +25,7 @@ router.get('/categoryget',foodCategoryGet)
 
 // Food
 router.post('/addfood',foodItemCreate)
+
 router.get('/foodget',foodItemyGet)
 router.post('/updateFood/:id',UpdateFood)
 router.post('/deletFood',DeletFood)

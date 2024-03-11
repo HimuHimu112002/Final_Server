@@ -51,7 +51,8 @@ let foodCategoryGet = async (req, res)=>{
 
 // Food item create
 let foodItemCreate = async (req, res)=>{
-    let {name,brand,category,discription,img,price} = req.body
+    console.log(req)
+    let {name,brand,category,discription,price,image} = req.body
     if(!name){
         res.send({error: "Please Enter The name"})
     }
@@ -64,9 +65,6 @@ let foodItemCreate = async (req, res)=>{
     if(!discription){
         res.send({error: "Please Enter The discription"})
     }
-    if(!img){
-        res.send({error: "Please Enter The img"})
-    }
     if(!price){
         res.send({error: "Please Enter The price"})
     }
@@ -76,7 +74,7 @@ let foodItemCreate = async (req, res)=>{
             brand,
             category,
             discription,
-            img,
+            image,
             price
         })
         foodcreate.save()
@@ -106,11 +104,11 @@ let foodDetails = async (req, res)=>{
     
 }
 
-// Food details
+// Food Search
 let foodSearch = async (req, res)=>{
     try{
         let name = req.params.name;
-        let data = await FoodModel.find({name})
+        let data= await  FoodModel.find({name})
         res.send({status:"success", data:data})
     }catch(e){
         res.send({status:"fail", message:"Something Went Wrong", error:e.toString()})

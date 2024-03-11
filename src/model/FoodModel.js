@@ -16,13 +16,13 @@ const DataShema = mongoose.Schema({
         type: String,
         required: true,
     },
-    img:{
+    image:{
         type: String,
         required: true,
     },
     price:{
         type: String,
-        required: true,
+        required: true, 
     },
     
 },
