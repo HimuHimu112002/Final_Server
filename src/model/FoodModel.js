@@ -24,6 +24,9 @@ const DataShema = mongoose.Schema({
         type: String,
         required: true, 
     },
+    uid:{
+        type: String,
+    },
     
 },
 {timestamps: true, versionKey: false}
