@@ -16,7 +16,7 @@ const imageUrl = process.env.BASE_URL;
 
 // sequrity middleare implementation
 app.use(cors())
-app.use(`${imageUrl}/images`, express.static(`${__dirname}/public/images/`));
+app.use(`/images`, express.static(`${__dirname}/public`));
 app.use(helmet())
 app.use(mongoSanitizer())
 

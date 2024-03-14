@@ -51,8 +51,7 @@ let foodCategoryGet = async (req, res)=>{
 
 // Food item create
 let foodItemCreate = async (req, res)=>{
-    console.log(req)
-    let {name,brand,category,discription,price,image} = req.body
+    let {name,brand,category,discription,price} = req.body
     if(!name){
         res.send({error: "Please Enter The name"})
     }
@@ -74,10 +73,11 @@ let foodItemCreate = async (req, res)=>{
             brand,
             category,
             discription,
-            image,
+            img:req.file.filename,
             price
         })
         foodcreate.save()
+        console.log(req.file.filename);
         res.send({status:"success", message:"Food Create Success"})
     }
 }
