@@ -68,7 +68,7 @@ let foodItemCreate = async (req, res)=>{
         res.send({error: "Please Enter The price"})
     }
     else{
-        let foodcreate = new FoodModel({
+        let food = new FoodModel({
             name,
             brand,
             category,
@@ -77,7 +77,7 @@ let foodItemCreate = async (req, res)=>{
             price,
             uid 
         })
-        foodcreate.save()
+        food.save()
         res.send({status:"success", message:"Food Create Success"})
     }
 }

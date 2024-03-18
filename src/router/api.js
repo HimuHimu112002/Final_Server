@@ -26,7 +26,8 @@ const Registration = require("../controller/RegistrationController")
 const Otp = require("../controller/OtpMatch")
 const Login = require("../controller/LoginController")
 const {ReadProfile,UpdateProfile} = require("../controller/ProfileController")
-const {foodBrandCreate,foodBrandGet,foodCategoryCreate,foodCategoryGet,foodItemCreate,foodItemyGet,foodDetails,DeletFood,UpdateFood,foodSearch,GetProductByBrand,GetProductByCategory} = require('../controller/FoodController')
+const {foodBrandCreate,foodBrandGet,foodCategoryCreate,foodCategoryGet,foodItemCreate,foodItemyGet,foodDetails,DeletFood,UpdateFood,foodSearch,GetProductByBrand,GetProductByCategory} = require('../controller/FoodController');
+const { SaveWishListService, GetWishList, RemoveWishListService } = require('../controller/WishListController');
 
 // Authentication
 router.post('/registration',Registration)
@@ -57,4 +58,9 @@ router.get('/foodDetail/:id',foodDetails)
 router.get('/foodsearch/:name',foodSearch)
 router.get('/foodbrand/:brand',GetProductByBrand)
 router.get('/foodcate/:category',GetProductByCategory)
+
+// Food Search
+router.post('/wishlist',SaveWishListService)
+router.get('/getwishlist', GetWishList)
+router.post('/removewishlist',RemoveWishListService)
 module.exports = router
