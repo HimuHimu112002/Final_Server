@@ -28,6 +28,7 @@ const Login = require("../controller/LoginController")
 const {ReadProfile,UpdateProfile} = require("../controller/ProfileController")
 const {foodBrandCreate,foodBrandGet,foodCategoryCreate,foodCategoryGet,foodItemCreate,foodItemyGet,foodDetails,DeletFood,UpdateFood,foodSearch,GetProductByBrand,GetProductByCategory} = require('../controller/FoodController');
 const { SaveWishListService, GetWishList, RemoveWishListService } = require('../controller/WishListController');
+const { SaveCartListService, GetCartList, RemoveCartListService, CartDetails } = require('../controller/CartList');
 
 // Authentication
 router.post('/registration',Registration)
@@ -59,8 +60,14 @@ router.get('/foodsearch/:name',foodSearch)
 router.get('/foodbrand/:brand',GetProductByBrand)
 router.get('/foodcate/:category',GetProductByCategory)
 
-// Food Search
+// Wishlist item
 router.post('/wishlist',SaveWishListService)
 router.get('/getwishlist', GetWishList)
 router.post('/removewishlist',RemoveWishListService)
+
+// Cartlist item
+router.post('/cartlist',SaveCartListService)
+router.get('/getcartlist', GetCartList)
+router.post('/removecartlist',RemoveCartListService)
+router.get('/cartDetail/:id',CartDetails)
 module.exports = router
