@@ -25,7 +25,7 @@ const router = express.Router();
 const Registration = require("../controller/RegistrationController")
 const Otp = require("../controller/OtpMatch")
 const Login = require("../controller/LoginController")
-const {ReadProfile,UpdateProfile} = require("../controller/ProfileController")
+const {ReadProfile,UpdateProfile, UserProfile, UserReadProfile} = require("../controller/ProfileController")
 const {foodBrandCreate,foodBrandGet,foodCategoryCreate,foodCategoryGet,foodItemCreate,foodItemyGet,foodDetails,DeletFood,UpdateFood,foodSearch,GetProductByBrand,GetProductByCategory} = require('../controller/FoodController');
 const { SaveWishListService, GetWishList, RemoveWishListService } = require('../controller/WishListController');
 const { SaveCartListService, GetCartList, RemoveCartListService, CartDetails } = require('../controller/CartList');
@@ -38,6 +38,8 @@ router.post('/login',Login)
 // profile
 router.get('/readprofile',ReadProfile)
 router.post('/updateprofile',UpdateProfile)
+router.post('/userprofile',UserProfile)
+router.get('/userredprofile',UserReadProfile)
 
 // brand
 router.post('/brandsave',foodBrandCreate)
