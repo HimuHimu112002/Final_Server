@@ -29,6 +29,8 @@ const {ReadProfile,UpdateProfile, UserProfile, UserReadProfile} = require("../co
 const {foodBrandCreate,foodBrandGet,foodCategoryCreate,foodCategoryGet,foodItemCreate,foodItemyGet,foodDetails,DeletFood,UpdateFood,foodSearch,GetProductByBrand,GetProductByCategory} = require('../controller/FoodController');
 const { SaveWishListService, GetWishList, RemoveWishListService } = require('../controller/WishListController');
 const { SaveCartListService, GetCartList, RemoveCartListService, CartDetails } = require('../controller/CartList');
+const { CreateInvoiceService, InvoiceListService, InvoiceProductListService, PaymentSuccessService, PaymentCancelService, PaymentFailService, PaymentIPNService } = require('../controller/InvoiceController');
+const { PaymentCreate } = require('../controller/CreatePayment');
 
 // Authentication
 router.post('/registration',Registration)
@@ -72,4 +74,16 @@ router.post('/cartlist',SaveCartListService)
 router.get('/getcartlist', GetCartList)
 router.post('/removecartlist',RemoveCartListService)
 router.get('/cartDetail/:id',CartDetails)
+
+// Invoice & Payment
+router.get('/CreateInvoice',CreateInvoiceService)
+router.post('/Createpayment',PaymentCreate)
+router.get('/InvoiceList',InvoiceListService)
+router.get('/InvoiceProductList/:id',InvoiceProductListService)
+
+router.post('/PaymentSuccess/:trxID',PaymentSuccessService)
+router.post('/PaymentCancel/:trxID',PaymentCancelService)
+router.post('/PaymentFail/:trxID',PaymentFailService)
+router.post('/PaymentIPN/:trxID',PaymentIPNService)
+
 module.exports = router
