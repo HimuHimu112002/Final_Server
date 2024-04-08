@@ -29,7 +29,7 @@ const {ReadProfile,UpdateProfile, UserProfile, UserReadProfile} = require("../co
 const {foodBrandCreate,foodBrandGet,foodCategoryCreate,foodCategoryGet,foodItemCreate,foodItemyGet,foodDetails,DeletFood,UpdateFood,foodSearch,GetProductByBrand,GetProductByCategory} = require('../controller/FoodController');
 const { SaveWishListService, GetWishList, RemoveWishListService } = require('../controller/WishListController');
 const { SaveCartListService, GetCartList, RemoveCartListService, CartDetails } = require('../controller/CartList');
-const { CreateInvoiceService, InvoiceListService, InvoiceProductListService, PaymentSuccessService, PaymentCancelService, PaymentFailService, PaymentIPNService, DeletInvoice, DeletInvoiceProduct } = require('../controller/InvoiceController');
+const { CreateInvoiceService, InvoiceListService, InvoiceProductListService, PaymentSuccessService, PaymentCancelService, PaymentFailService, PaymentIPNService, DeletInvoice} = require('../controller/InvoiceController');
 const { PaymentCreate } = require('../controller/CreatePayment');
 
 // Authentication
@@ -81,7 +81,6 @@ router.post('/Createpayment',PaymentCreate)
 router.get('/InvoiceList',InvoiceListService)
 router.get('/InvoiceProductList/:id',InvoiceProductListService)
 router.post('/invoiceDelete',DeletInvoice)
-router.post('/invoiceProductDelete',DeletInvoiceProduct)
 
 router.post('/PaymentSuccess/:trxID',PaymentSuccessService)
 router.post('/PaymentCancel/:trxID',PaymentCancelService)

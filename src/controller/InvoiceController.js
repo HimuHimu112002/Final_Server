@@ -212,20 +212,9 @@ const InvoiceProductListService = async (req,res) => {
 const DeletInvoice = async(req, res)=>{
   try{
     let deletData = req.body.id
-    let result = await InvoiceModel.findByIdAndDelete(deletData)
-    res.send({status:"success", data:result})
-  }catch(e){
-    res.send({status:"fail", message:"Something Went Wrong", error:e.toString()})
-  }
-  
-}
-
-// Invoice By product delete
-const DeletInvoiceProduct = async(req, res)=>{
-  try{
-    let invoice_id = req.body.id
-    let data = await InvoiceProductModel.find({invoiceID:invoice_id})
+    let data = await InvoiceProductModel.find({invoiceID:deletData})
     let delte_By_InvoiceProduct = data[0]._id
+    await InvoiceModel.findByIdAndDelete(deletData)
     await InvoiceProductModel.findByIdAndDelete(delte_By_InvoiceProduct)
     res.send({status:"success"})
   }catch(e){
@@ -233,6 +222,7 @@ const DeletInvoiceProduct = async(req, res)=>{
   }
   
 }
+
 
 module.exports = {
   CreateInvoiceService,
@@ -243,5 +233,4 @@ module.exports = {
   InvoiceListService,
   InvoiceProductListService,
   DeletInvoice,
-  DeletInvoiceProduct
 };
